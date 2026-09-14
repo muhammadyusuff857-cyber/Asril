@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#527b79">
+<title>Asril & Mutmainna</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Parisienne&display=swap');
+:root{
+ --teal:#4d7775; --teal2:#315b59; --paper:#f5f5ec; --paper2:#e9ece4;
+ --ink:#4b5754; --rose:#b8797c; --gold:#a98a58; --line:#c9d2ca;
+ --shadow:0 20px 50px rgba(36,65,63,.22);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#d8ddd6;color:var(--ink);font-family:Montserrat,Arial,sans-serif}
+button,input,textarea{font:inherit}
+body.locked{overflow:hidden}
+.site{width:min(100%,560px);margin:auto;background:var(--paper);box-shadow:0 0 70px #173c3a45;position:relative}
+.screen{min-height:100svh;position:relative;overflow:hidden}
+.screen::before{content:"";position:absolute;inset:0;background:url('assets/back.jpeg') center/cover no-repeat;filter:saturate(.8) brightness(1.04);z-index:0}
+.screen::after{content:"";position:absolute;inset:0;background:linear-gradient(#f5f5ec10,#f5f5ec45);z-index:0;pointer-events:none}
+.inner{position:relative;z-index:2;width:calc(100% - 74px);max-width:430px;margin:0 auto}
+.panel{background:rgba(245,247,238,.93);border:2px solid rgba(77,119,117,.8);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.panel.teal{background:linear-gradient(160deg,#527b79,#315b59);color:#f6f4e9}
+.flowerline{height:55px;background:url('assets/reference.jpg') center bottom/cover no-repeat;opacity:.72}
+.logo{font-family:Parisienne,cursive;font-size:45px;color:#f5f3e9;line-height:1}
+.script{font-family:Parisienne,cursive}
+.serif{font-family:"Cormorant Garamond",serif}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase}
+h1,h2,h3,p{margin-top:0}
+h1{font:600 48px/0.9 "Cormorant Garamond",serif}
+h2{font:600 43px/1 "Cormorant Garamond",serif}
+h3{font:600 28px "Cormorant Garamond",serif}
+p{font-size:12px;line-height:1.85}
+.gold{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid #f4f1e4;border-radius:999px;background:var(--teal);color:white;padding:12px 22px;text-decoration:none;font-size:11px;letter-spacing:1.2px;cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-2px)}
+.btn.light{background:#f6f4e9;color:var(--teal2);border-color:var(--teal2)}
+.btn.rose{background:var(--rose);border-color:var(--rose)}
+/* opening */
+#opening{position:fixed;inset:0;background:#f6f8f1;z-index:1000;display:flex;align-items:center;justify-content:center;transition:opacity .7s,visibility .7s}
+#opening.hide{opacity:0;visibility:hidden}
+.opening-logo{text-align:center;color:var(--teal)}
+.opening-logo .w{font:70px Parisienne;line-height:1}
+.opening-logo small{font-size:10px;letter-spacing:2px}
+/* cover */
+.cover{display:flex;align-items:flex-end;justify-content:center;padding:0 0 64px}
+.cover .inner{text-align:center;color:#fff;width:calc(100% - 48px);}
+.couple-names{font:54px/0.82 Parisienne;color:var(--teal);margin:22px 0 18px}
+.cover .date{font-size:10px;letter-spacing:2px}
+.flower-arch{width:170px;height:95px;margin:0 auto 5px;background:url('assets/reference.jpg') center/cover;border-radius:90px 90px 0 0;opacity:.55;mix-blend-mode:multiply}
+.cover .verse{font:italic 17px/1.5 "Cormorant Garamond";margin:20px 5px 12px}
+.cover .verse span{font:11px Montserrat;letter-spacing:1px}
+
+/* ---- Cover foto penuh (gaya "Dear, Nama Tamu") ---- */
+#home::before{background-image:url('assets/galeri5.jpeg');filter:saturate(.92) brightness(1.0)}
+#home::after{background:linear-gradient(180deg, rgba(20,20,15,0) 35%, rgba(15,15,10,.82) 100%)}
+#home .mini{color:#fff;font-size:12px;letter-spacing:3px;opacity:.9}
+#home .couple-names{color:#fff}
+#home .dear{font-size:11px;letter-spacing:2px;opacity:.85;margin-top:20px}
+#home .guest{font-size:16px;font-weight:600;margin-top:4px}
+#home .btn.ghost{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.7);backdrop-filter:blur(3px);margin-top:26px}
+/* content */
+.section{padding:70px 0}
+.intro{padding-top:60px}
+.section-title{text-align:center;color:var(--teal);margin-bottom:24px}
+.divider{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--gold);margin:10px 0 22px}
+.divider:before,.divider:after{content:"";width:55px;height:1px;background:var(--gold)}
+/* greeting */
+.greeting .panel{padding:30px 26px;text-align:center}
+.greeting .logo{color:var(--teal);margin-bottom:15px}
+.greeting .quote{font:italic 17px/1.5 "Cormorant Garamond";margin-bottom:20px}
+.greeting .photo{height:175px;border-radius:18px;overflow:hidden;margin:20px 0;background:#d6ddd5}
+.greeting .photo img{width:100%;height:100%;object-fit:cover}
+/* couple */
+.couple{padding-top:25px}
+.couple .panel{padding:28px 20px;text-align:center}
+.couple-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.person img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:90px 90px 16px 16px;border:2px solid var(--line);padding:4px}
+.person .name{font:34px Parisienne;color:var(--teal);margin:10px 0 2px}
+.person small{font-size:9px;line-height:1.7}
+/* save date */
+.save{background:var(--teal);color:#f5f4ea;text-align:center;padding:65px 0}
+.save::before{background-image:url('assets/back.jpeg');opacity:.11}
+.save .inner{max-width:450px}
+.save .panel{background:transparent;border:0;box-shadow:none}
+.save h2{color:#f5f4ea;margin-bottom:10px}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0}
+.count{background:#e9eee6;color:var(--teal2);border-radius:7px;padding:10px 3px}
+.count b{font:600 28px "Cormorant Garamond";display:block}
+.count span{font-size:8px;letter-spacing:1px}
+/* events */
+.events .event{background:#edf0e9;border:1px solid var(--line);border-radius:18px;padding:24px 17px;text-align:center;margin:12px 0;position:relative;overflow:hidden}
+.event:after{content:"";position:absolute;inset:7px;border:1px solid #c7d0c9;border-radius:13px;pointer-events:none}
+.event h3{color:var(--teal);margin-bottom:8px}
+.event .date{font-size:10px;letter-spacing:1.5px}
+.event .place{font-size:11px;line-height:1.7}
+.event .icon{font-size:22px;color:var(--gold);margin:8px}
+/* story */
+.story .panel{padding:28px 24px}
+.timeline{border-left:1px solid var(--gold);padding-left:18px;margin:24px 0 0 8px}
+.item{position:relative;padding:0 0 27px}
+.item:before{content:"";position:absolute;left:-24px;top:3px;width:9px;height:9px;border:1px solid var(--gold);border-radius:50%;background:var(--paper)}
+.item h3{color:var(--teal);font-size:24px;margin-bottom:5px}
+/* gallery */
+.gallery{background:#edf0e9;padding:70px 0}
+.gallery::before{opacity:.14}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gallery-grid .g{border-radius:15px;overflow:hidden;height:180px;background:#ccd4cc}
+.gallery-grid .g:first-child{grid-row:span 2;height:368px}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;filter:saturate(.8)}
+/* wishes / rsvp */
+.rsvp{padding:70px 0;background:var(--teal);color:#f5f4e9;text-align:center}
+.rsvp::before{opacity:.12}
+.rsvp .panel{background:#f3f4ec;color:var(--ink);padding:28px 22px;text-align:left}
+.field{margin-bottom:10px}
+.field label{display:block;font-size:9px;letter-spacing:1px;margin-bottom:5px}
+.field input,.field textarea{width:100%;border:1px solid #cbd4cd;border-radius:10px;padding:11px;background:#fff;color:var(--ink);outline:none}
+.field textarea{min-height:85px;resize:vertical}
+.attend{display:flex;gap:8px;margin:8px 0 14px}
+.attend button{flex:1;padding:11px;border:1px solid #cbd4cd;background:white;border-radius:10px;color:var(--ink);cursor:pointer}
+.attend button.active{background:var(--teal);color:white;border-color:var(--teal)}
+/* gift */
+.gift{padding:70px 0}
+.gift .panel{padding:28px 22px}
+.bank{border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0;background:#f7f7f0}
+.bank strong{color:var(--teal);font-size:15px}.bank .num{font-size:18px;letter-spacing:1px;margin:4px 0}
+.copy{float:right;border:0;background:var(--gold);color:#fff;border-radius:8px;padding:7px 9px;cursor:pointer}
+/* footer */
+.footer{min-height:70svh;display:flex;align-items:flex-end;padding:35px 0 55px;text-align:center;color:white}
+.footer:before{filter:brightness(.55) saturate(.75)}
+.footer .panel{background:#315b59d9;border-color:#f2ecdb88;color:#fff;padding:30px 22px}
+.footer .couple-names{color:#fff;font-size:57px}
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:15px;z-index:50;background:#315b59ed;border:1px solid #ffffff50;border-radius:999px;padding:6px;display:flex;gap:3px;box-shadow:0 12px 30px #173c3a33}
+.nav button{width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:white;cursor:pointer;font-size:14px}
+.nav button:hover{background:#ffffff20}
+.music{position:fixed;right:max(16px,calc((100vw - 560px)/2 + 16px));bottom:70px;z-index:50;width:42px;height:42px;border-radius:50%;border:1px solid white;background:var(--rose);color:white;cursor:pointer}
+.toast{position:fixed;left:50%;bottom:80px;transform:translate(-50%,20px);background:#315b59;color:#fff;padding:10px 16px;border-radius:999px;font-size:11px;opacity:0;pointer-events:none;transition:.3s;z-index:200}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.reveal{opacity:0;transform:translateY(24px);transition:.8s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:430px){.inner{width:calc(100% - 46px)}h1{font-size:44px}.couple-names{font-size:47px}.nav button{width:33px;height:33px}}
+</style>
+</head>
+<body class="locked">
+
+<div id="opening">
+  <div class="opening-logo">
+    <div class="w">AM</div>
+    <small>WEDDING INVITATION</small>
+  </div>
+</div>
+
+<main class="site">
+<section class="screen cover" id="home">
+ <div class="inner reveal">
+   <div class="mini">THE WEDDING OF</div>
+   <div class="couple-names">Asril<br><span style="font-size:.55em">&amp;</span><br>Mutmainna</div>
+   <div class="dear">Dear,</div>
+   <div class="guest" id="guestName">Bapak/Ibu/Saudara/i</div>
+   <button class="btn ghost" onclick="go('greeting')">Buka Undangan</button>
+ </div>
+</section>
+
+<section class="screen section greeting" id="greeting">
+ <div class="inner">
+  <div class="panel reveal">
+   <div class="logo">AM</div>
+   <p class="quote">“Semoga langkah kecil hari ini menjadi awal dari perjalanan panjang yang penuh cinta, doa, dan keberkahan.”</p>
+   <p>Assalamu’alaikum Wr. Wb.</p>
+   <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan menjadi bagian dari hari istimewa kami.</p>
+   <div class="photo"><img src="assets/Galeri3.jpeg" alt="Foto pasangan"></div>
+   <p class="serif" style="font-size:18px">Kehadiran dan doa restu Anda adalah kebahagiaan bagi kami.</p>
+  </div>
+ </div>
+</section>
+
+<section class="screen section couple" id="couple">
+ <div class="inner">
+  <div class="section-title reveal"><div class="eyebrow">Mempelai</div><h2>Pria & Wanita</h2><div class="divider">A&M</div></div>
+  <div class="panel reveal">
+   <div class="couple-grid">
+    <div class="person"><img src="assets/asril.jpeg"><div class="name">Asril</div><small>Putra kedua dari Bapak Ruslan<br>&amp; Ibu Sunarti</small></div>
+    <div class="person"><img src="assets/inna.jpeg"><div class="name">Mutmainna</div><small>Putri kedua dari Bapak Muh Arif<br>&amp; Ibu Ratna</small></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="screen save" id="save">
+ <div class="inner">
+  <div class="panel reveal">
+   <div class="divider">❧</div><h2>Save The Date</h2>
+   <p>Dan kami bersyukur, dipertemukan Allah di waktu terbaik.<br>Kini kami menanti hari istimewa kami.</p>
+   <div class="countdown">
+    <div class="count"><b id="dd">00</b><span>Hari</span></div>
+    <div class="count"><b id="hh">00</b><span>Jam</span></div>
+    <div class="count"><b id="mm">00</b><span>Menit</span></div>
+    <div class="count"><b id="ss">00</b><span>Detik</span></div>
+   </div>
+   <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."</p>
+   <p>"Q.S. Ar-Rum 21"</p>
+  </div>
+ </div>
+</section>
+
+<section class="screen section events" id="events">
+ <div class="inner">
+  <div class="section-title reveal"><div class="eyebrow">Detail Acara</div><h2>Save Our Date</h2><div class="divider">❧</div></div>
+  <div class="event reveal"><div class="icon">☾</div><h3>Akad Nikah</h3><div class="date">MINGGU, 27 SEPTEMBER 2026</div><p>Pukul 10.00 WITA</p><p class="place">Kediaman Mempelai Wanita<br>Kab. Wajo, Salompare desa Belawa</p><a class="btn light" href="https://maps.app.goo.gl/WX7ALPXR9d8zFuNH7" target="_blank">Petunjuk Lokasi</a></div>
+  <div class="event reveal"><div class="icon">✦</div><h3>Resepsi</h3><div class="date">MINGGU, 27 SEPTEMBER 2026</div><p>Pukul 11.00 WITA — selesai</p><p class="place">Kediaman Mempelai Pria<br>Kab. Wajo, Desa Kalola</p><a class="btn light" href="https://maps.app.goo.gl/htRV2Ge39Qk6y1XT7" target="_blank">Petunjuk Lokasi</a></div>
+ </div>
+</section>
+
+<section class="screen section story" id="story">
+ <div class="inner">
+  <div class="section-title reveal"><div class="eyebrow">Perjalanan Kami</div><h2>Love Story</h2><div class="divider">❧</div></div>
+  <div class="panel reveal">
+   <div class="timeline">
+    <div class="item"><h3>Awal Bertemu</h3><p>Akhirnya, kapal kami segera berlayar. Terima kasih kepada keluarga besar dan juga teman-teman yang telah menjadi saksi perjalanan cinta kami.</p></div>
+    <div class="item"><h3>Lamaran</h3><p>Setelah melalui banyak cerita, kami memantapkan hati untuk melangkah ke jenjang yang lebih serius. Sebuah keputusan yang disambut hangat oleh keluarga.</p></div>
+    <div class="item"><h3>Pernikahan</h3><p>Hari yang kami nantikan tiba. Dengan doa dari orang-orang tercinta, kami memulai perjalanan baru sebagai satu keluarga.</p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="screen gallery" id="gallery">
+ <div class="inner">
+  <div class="section-title reveal"><div class="eyebrow">Momen</div><h2>Our Gallery</h2><div class="divider">❧</div></div>
+  <div class="gallery-grid reveal">
+   <div class="g"><img src="assets/Galeri4.jpeg"></div><div class="g"><img src="assets/Galeri1.jpeg"></div><div class="g"><img src="assets/Galeri2.jpeg"></div><div class="g"><img src="assets/galeri5.jpeg"></div><div class="g"><img src="assets/Galeri3.jpeg"></div>
+  </div>
+ </div>
+</section>
+
+<section class="screen rsvp" id="rsvp">
+ <div class="inner">
+  <div class="eyebrow">Konfirmasi Kehadiran</div><h2>RSVP</h2>
+  <p>Mohon kesediaannya untuk mengisi konfirmasi kehadiran. Terima kasih atas doa dan perhatian Anda.</p>
+  <div class="panel reveal">
+   <div class="field"><label>NAMA</label><input id="rname" placeholder="Nama Anda"></div>
+   <div class="field"><label>KEHADIRAN</label><div class="attend"><button id="yes" onclick="attendance(true)">✓ Hadir</button><button id="no" onclick="attendance(false)">× Tidak Hadir</button></div></div>
+   <div class="field"><label>JUMLAH TAMU</label><input id="rqty" type="number" min="1" max="5" value="1"></div>
+   <div class="field"><label>UCAPAN &amp; DOA</label><textarea id="rmsg" placeholder="Tulis doa terbaik untuk kami..."></textarea></div>
+   <button class="btn" style="width:100%" onclick="submitRsvp()">Kirim Konfirmasi</button>
+  </div>
+ </div>
+</section>
+
+<section class="screen footer" id="closing">
+ <div class="inner">
+  <div class="panel reveal">
+   <div class="eyebrow">Terima Kasih</div>
+   <div class="couple-names">Asril<br><span style="font-size:.55em">&amp;</span><br>Mutmainna</div>
+   <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
+   <p class="script" style="font-size:28px">See you on our special day</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<div class="nav">
+ <button onclick="go('home')" title="Home">⌂</button>
+ <button onclick="go('couple')" title="Mempelai">♡</button>
+ <button onclick="go('events')" title="Acara">✦</button>
+ <button onclick="go('gallery')" title="Galeri">▦</button>
+ <button onclick="go('rsvp')" title="RSVP">✓</button>
+ <button onclick="go('gift')" title="Gift">♧</button>
+</div>
+<button class="music" onclick="toggleMusic()" id="musicBtn">♫</button>
+<div class="toast" id="toast"></div>
+
+<script>
+// Ambil nama tamu dari URL, misal: index.html?to=Budi+Santoso
+(function(){
+ const params=new URLSearchParams(window.location.search);
+ const guest=params.get("to")||params.get("nama");
+ if(guest){
+  document.getElementById("guestName").textContent=decodeURIComponent(guest).replace(/\+/g," ");
+ }
+})();
+
+const target=new Date("2026-09-27T10:00:00+10:00").getTime();
+function pad(n){return String(n).padStart(2,"0")}
+function countdown(){
+ const d=Math.max(0,target-Date.now());
+ document.getElementById("dd").textContent=pad(Math.floor(d/86400000));
+ document.getElementById("hh").textContent=pad(Math.floor(d/3600000)%24);
+ document.getElementById("mm").textContent=pad(Math.floor(d/60000)%60);
+ document.getElementById("ss").textContent=pad(Math.floor(d/1000)%60);
+}
+countdown();setInterval(countdown,1000);
+
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
+window.addEventListener("load",()=>{
+ setTimeout(()=>{document.getElementById("opening").classList.add("hide");document.body.classList.remove("locked")},1200);
+ document.querySelectorAll(".reveal").forEach(x=>x.classList.add("show"));
+});
+const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(x=>observer.observe(x));
+
+let attending=null;
+function attendance(v){attending=v;document.getElementById("yes").classList.toggle("active",v);document.getElementById("no").classList.toggle("active",!v)}
+function submitRsvp(){
+ const name=document.getElementById("rname").value.trim();
+ if(!name||attending===null){toast("Mohon isi nama dan pilih kehadiran.");return}
+ toast("Terima kasih, "+name+"! Konfirmasi berhasil dicatat pada demo ini.");
+}
+function copyNum(n){navigator.clipboard?.writeText(n);toast("Nomor rekening disalin: "+n)}
+function toast(t){const x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),2500)}
+let audio=null,playing=false;
+function toggleMusic(){
+ if(!audio){audio=new Audio();audio.loop=true;audio.src="assets/music.mp3"}
+ if(playing){audio.pause();playing=false;document.getElementById("musicBtn").textContent="♫"}
+ else{audio.play().catch(()=>toast("Tambahkan assets/music.mp3 untuk mengaktifkan musik."));playing=true;document.getElementById("musicBtn").textContent="Ⅱ"}
+}
+</script>
+</body>
+</html>
